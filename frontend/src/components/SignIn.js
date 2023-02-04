@@ -6,7 +6,9 @@ import { userLogin } from '../state/reducers/userReducer'
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 function SignIn() {
-
+const googleAuth = ()=>{
+  window.open(`${process.env.REACT_APP_API_URL}/auth/google/callback`,"_self")
+}
   const naviagte = useNavigate();
   const getDataFromStor = useSelector((data) => data.userReducer);
   const token = localStorage.getItem('token') || null;
@@ -22,20 +24,19 @@ function SignIn() {
   }
   const handleSubmit = (event) => {
       event.preventDefault();
+      console.log('from signin',userInput);
       dispatch(userLogin(userInput));
       setUserInput({
           email : '',
           password : ''
       });
-      navigate('/Welcome');
+      // navigate('/Welcome');
   };
-  // useEffect(() => {
-  //   // if(getDataFromStor.message === 'active' && token !== null){
-
-  //     if(getDataFromStor.message === 'active'){
-  //         navigate('/Welcome');
-  //     }
-  // },[getDataFromStor])
+  useEffect(() => {
+    if(getDataFromStor.message === 'active' && token !== null){
+        navigate('/Welcome');
+    }
+},[getDataFromStor])
   const signUpPage = () =>{
   naviagte('/SignUp');
   }
@@ -76,6 +77,7 @@ function SignIn() {
 
                         <input
                           type="email"
+                          name="email"
                           id="loginEmail"
                           className="form-control"
                           onChange={handleChange}
@@ -89,6 +91,7 @@ function SignIn() {
 
                         <input
                           type="password"
+                          name="password"
                           id="loginPassword"
                           className="form-control"
                           onChange={handleChange}
@@ -111,7 +114,7 @@ function SignIn() {
                         >
                           Sign Up
                         </button>
-                        <a href="/auth/microsoft">Login with Microsoft</a>
+                       <button  className="btn btn-primary btn-block mb-4 mx-3" onClick={googleAuth}>Sign In With Google</button>
                       </center>
                     </form>
                   </div>
