@@ -60,7 +60,8 @@ routes.get( '/google/callback',
         failureRedirect: '/login/failure'
 }));
 
-// routes.get("/google",passport.authenticate("google",["profile","email"]));
+
+routes.get("/google",passport.authenticate("google",["profile","email"]));
 routes.get("/logout",(req,res)=>{
     req.logout();
     res.redirect(process.env.CLIENT_URL);
