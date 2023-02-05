@@ -6,9 +6,13 @@ import { userLogin } from '../state/reducers/userReducer'
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 function SignIn() {
-const googleAuth = ()=>{
+const googleAuth = (e)=>{
+  e.preventDefault();
   window.open(`${process.env.REACT_APP_API_URL}/auth/google/callback`,"_self")
+  // window.open("http://localhost:5000/auth/google/callback","_self")
+  console.log(`${process.env.REACT_APP_API_URL}/auth/google/callback`,"_self")
 }
+
   const naviagte = useNavigate();
   const getDataFromStor = useSelector((data) => data.userReducer);
   const token = localStorage.getItem('token') || null;
@@ -114,7 +118,7 @@ const googleAuth = ()=>{
                         >
                           Sign Up
                         </button>
-                       <button  className="btn btn-primary btn-block mb-4 mx-3" onClick={googleAuth}>Sign In With Google</button>
+                       <button  type="button"className="btn btn-primary btn-block mb-4 mx-3" onClick={googleAuth}>Sign In With Google</button>
                       </center>
                     </form>
                   </div>

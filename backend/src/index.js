@@ -29,8 +29,13 @@ app.use(
         credentials:true,
     })
 )
-app.use("/auth",routes);
-
+app.use("/routes",routes);
+// app.get("/auth/google/callback",
+//   passport.authenticate("google", { 
+//     successRedirect: '/good', 
+//     failureRedirect: "/failed" 
+//   }),
+// );
 db();
 app.use(cors());
 app.use(express.json());
