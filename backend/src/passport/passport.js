@@ -1,7 +1,7 @@
 const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 const passport = require("passport")
 // const mongoose = require("mongoose");
-// const user = require('../model/user');
+const user = require('../model/user');
 passport.use(new GoogleStrategy({
     clientID:"434596975532-25a9ht8bdphvqmetqvl10kk4q28huelu.apps.googleusercontent.com",
     clientSecret: "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",

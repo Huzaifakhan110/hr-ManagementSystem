@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 // const passport = require('passport-microsoft');
- 
+ //
 require('dotenv').config();
 auth = async (req, res, next) => {
     const token = req.headers.authorization;

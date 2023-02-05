@@ -30,6 +30,7 @@ routes.get('/auth/google/callback',
     
       successRedirect: process.env.CLIENT_URL,}
 ));
+//
 // routes.get( '/auth/google/callback',
 //     passport.authenticate( 'google', {
 //         successRedirect: '/auth/google/success',

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-
+//
 // const dbUrl = "mongodb://localhost:27017/hrManagement";
 const dbUrl = "mongodb+srv://HuzaifaKhan:LzRjoy6NJxuc1GQx@cluster0.aaptbdk.mongodb.net/test";
 const connect = async () => {
